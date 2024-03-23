@@ -31,5 +31,5 @@ public class ListController {
     public void setStatus(@PathVariable Long taskId, @RequestParam String taskStatus){
         service.setStatus(taskId, taskStatus);
     }
-    
+
 }
