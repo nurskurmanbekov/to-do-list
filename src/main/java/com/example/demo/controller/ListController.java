@@ -23,4 +23,8 @@ public class ListController {
     public List<TaskResponse> userTasks(@PathVariable Long userId){
         return service.userTasks(userId);
     }
+    @PostMapping("/update/{taskId}")
+    public void update(@RequestBody TaskRequest request, @PathVariable Long taskId){
+        service.update(request, taskId);
+    }
 }

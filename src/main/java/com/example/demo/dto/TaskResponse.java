@@ -13,6 +13,7 @@ public class TaskResponse {
     private String name;
     private String description;
     private LocalDateTime addedTime;
+    private LocalDateTime updatedDate;
     private LocalDateTime deadline;
 
 

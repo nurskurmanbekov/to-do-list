@@ -17,6 +17,7 @@ public class Task {
     private String name;
     private String description;
     private LocalDateTime addedDate;
+    private LocalDateTime updatedDate;
     private LocalDateTime deadline;
     @ManyToOne
     private TaskStatus taskStatus;

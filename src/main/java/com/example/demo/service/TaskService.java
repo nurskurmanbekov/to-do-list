@@ -9,4 +9,6 @@ public interface TaskService {
     void add(TaskRequest request, Long userId);
 
     List<TaskResponse> userTasks(Long userId);
+
+    void update(TaskRequest request, Long taskId);
 }

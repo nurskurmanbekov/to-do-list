@@ -33,6 +33,7 @@ public class TaskServiceJpa implements TaskService{
             task.setName(request.getName());
             task.setDescription(request.getDescription());
             task.setDeadline(request.getDeadline());
+            task.setUpdatedDate(LocalDateTime.now());
             task.setAddedDate(LocalDateTime.now());
             task.setTaskStatus(taskStatusRepository.findById(1L).get());
             repository.save(task);
@@ -54,6 +55,20 @@ public class TaskServiceJpa implements TaskService{
         else {
             List<Task> userTasks = user.get().getTasks();
             return taskMapper.toDtoS(userTasks);
+        }
+    }
+
+    @Override
+    public void update(TaskRequest request, Long taskId) {
+        Optional<Task> task = repository.findById(taskId);
+        if (task.isEmpty())
+            System.out.println("no task with id" + taskId);
+        else {
+            task.get().setName(request.getName());
+            task.get().setDescription(request.getDescription());
+            task.get().setUpdatedDate(LocalDateTime.now());
+            task.get().setDeadline(request.getDeadline());
+            repository.save(task.get());
         }
     }
 }
