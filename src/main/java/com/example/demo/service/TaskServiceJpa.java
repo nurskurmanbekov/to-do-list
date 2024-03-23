@@ -88,4 +88,9 @@ public class TaskServiceJpa implements TaskService{
         task.get().setTaskStatus(taskStatus.get());
         repository.save(task.get());
     }
+
+    @Override
+    public void deleteById(Long taskId) {
+        repository.deleteById(taskId);
+    }
 }

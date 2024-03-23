@@ -13,4 +13,6 @@ public interface TaskService {
     void update(TaskRequest request, Long taskId);
 
     void setStatus(Long taskId, String taskStatus1);
+
+    void deleteById(Long taskId);
 }

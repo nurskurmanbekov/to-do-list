@@ -31,5 +31,9 @@ public class ListController {
     public void setStatus(@PathVariable Long taskId, @RequestParam String taskStatus){
         service.setStatus(taskId, taskStatus);
     }
+    @DeleteMapping("/{taskId}")
+    public void deleteById(@PathVariable Long taskId){
+        service.deleteById(taskId);
+    }
 
 }
