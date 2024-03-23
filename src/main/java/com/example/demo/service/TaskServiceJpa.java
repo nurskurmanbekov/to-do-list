@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.TaskRequest;
 import com.example.demo.dto.TaskResponse;
 import com.example.demo.entity.Task;
+import com.example.demo.entity.TaskStatus;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.TaskMapper;
 import com.example.demo.repository.TaskRepository;
@@ -70,5 +71,21 @@ public class TaskServiceJpa implements TaskService{
             task.get().setDeadline(request.getDeadline());
             repository.save(task.get());
         }
+    }
+
+    @Override
+    public void setStatus(Long taskId, String taskTitle) {
+        Optional<Task> task = repository.findById(taskId);
+        Optional<TaskStatus> taskStatus = taskStatusRepository.findByTitle(taskTitle);
+        if (task.isEmpty()){
+            System.out.println("no task with id" + taskId);
+            return;
+        }
+        if (taskStatus.isEmpty()){
+            System.out.println("no task status with title" + taskTitle);
+            return;
+        }
+        task.get().setTaskStatus(taskStatus.get());
+        repository.save(task.get());
     }
 }

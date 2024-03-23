@@ -11,4 +11,6 @@ public interface TaskService {
     List<TaskResponse> userTasks(Long userId);
 
     void update(TaskRequest request, Long taskId);
+
+    void setStatus(Long taskId, String taskStatus1);
 }

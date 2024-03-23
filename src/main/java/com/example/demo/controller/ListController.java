@@ -27,4 +27,9 @@ public class ListController {
     public void update(@RequestBody TaskRequest request, @PathVariable Long taskId){
         service.update(request, taskId);
     }
+    @PostMapping("/setStatus/{taskId}")
+    public void setStatus(@PathVariable Long taskId, @RequestParam String taskStatus){
+        service.setStatus(taskId, taskStatus);
+    }
+    
 }
