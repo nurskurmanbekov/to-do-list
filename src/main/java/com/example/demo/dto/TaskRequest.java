@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class TaskRequest {
     private String name;
     private String description;
+    private LocalDateTime updatedDate;
     private LocalDateTime deadline;
 
 }

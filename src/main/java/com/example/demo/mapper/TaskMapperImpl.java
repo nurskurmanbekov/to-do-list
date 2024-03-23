@@ -24,6 +24,7 @@ public class TaskMapperImpl implements TaskMapper{
         taskResponse.setName(task.getName());
         taskResponse.setDescription(task.getDescription());
         taskResponse.setAddedTime(task.getAddedDate());
+        taskResponse.setUpdatedDate(task.getUpdatedDate());
         taskResponse.setDeadline(task.getDeadline());
         return taskResponse;
     }
