@@ -1,12 +1,18 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.dto.UserRequest;
+import com.example.demo.service.UserService;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
-
-
+    private final UserService service;
+    @PostMapping("/add")
+    public void add(@RequestBody UserRequest request){
+        service.add(request);
+    }
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -14,8 +16,8 @@ public class Task {
 
     private String name;
     private String description;
-    private String addedDate;
-    private String deadline;
+    private LocalDateTime addedDate;
+    private LocalDateTime deadline;
     @ManyToOne
     private TaskStatus taskStatus;
 }
