@@ -6,25 +6,16 @@ import com.example.demo.entity.User;
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceJpa implements UserService{
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    @Override
-    public void add(UserRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isEmpty()){
-            User user = new User();
-            user.setEmail(request.getEmail());
-            user.setName(request.getName());
-            userRepository.save(user);
-        }
-        else {
-            System.out.println("user with this email is already exist!");
-        }
-    }
+
 
     @Override
     public void register(RegisterRequest request) {
@@ -33,6 +24,8 @@ public class UserServiceJpa implements UserService{
         User user = new User();
         user.setEmail(request.getEmail());
         user.setName(request.getName());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        userRepository.save(user);
 
     }
 }
