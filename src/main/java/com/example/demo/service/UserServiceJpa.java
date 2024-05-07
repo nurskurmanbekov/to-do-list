@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserRequest;
+import com.example.demo.dto.auth.RegisterRequest;
 import com.example.demo.entity.User;
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,15 @@ public class UserServiceJpa implements UserService{
         else {
             System.out.println("user with this email is already exist!");
         }
+    }
+
+    @Override
+    public void register(RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail()))
+            throw new BadRequestException("User with this email is already exist!");
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setName(request.getName());
+
     }
 }
